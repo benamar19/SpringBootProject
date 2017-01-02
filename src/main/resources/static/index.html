@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Categories.Produit</title>
+<link rel="stylesheet" type="text/css"
+href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+<link rel="stylesheet"  type="text/css" href="/css/myStyle.css">
+</head>
+<body ng-controller="MyController" ng-app="MyApp">
+
+<div class="container spacer">
+Cherche :
+<input type="text" ng-model="motCle">
+<button ng-click="chargerProduits()">Charger </button>
+</div>
+
+<div class="container">
+	<table id="table-1" class="table table-striped" >
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Designation</th>
+				<th>prix</th>
+				<th>Quantite</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="p in prods.content">
+				<td>{{p.id}}</td>
+				<td>{{p.designation}}</td>
+				<td>{{p.prix}}</td>
+				<td>{{p.quantite}}</td>
+			</tr>
+		</tbody>
+		
+	</table>
+
+</div>
+<div class="container">
+  <ul class="nav nav-pills">
+    <li  ng-class="{active:$index==curentPage}" ng-repeat="p in pages track by $index" class="cliquable"> 
+      <a ng-click="goToPage($index)"> {{$index}} </a>
+    </li>
+  </ul>
+</div>
+
+<script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+
+<script type="text/javascript" src="main.js"></script>
+</body>
+</html>
